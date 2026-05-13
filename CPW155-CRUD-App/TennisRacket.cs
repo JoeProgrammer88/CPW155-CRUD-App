@@ -5,6 +5,8 @@
 /// </summary>
 public class TennisRacket
 {
+    private double _price;
+
     /// <summary>
     /// The PK of the tennis racket in the database.
     /// </summary>
@@ -28,5 +30,19 @@ public class TennisRacket
     /// <summary>
     /// The price the racket will sell at retail in US dollars.
     /// </summary>
-    public double Price { get; set; }
+    public double Price 
+    {
+        get 
+        { 
+            return _price; 
+        }
+        set 
+        { 
+            if (value <= 0)
+            {
+                throw new ArgumentOutOfRangeException("Price must be positive");
+            }
+            _price = value; 
+        }
+    }
 }
