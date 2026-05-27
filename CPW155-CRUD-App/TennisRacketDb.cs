@@ -12,26 +12,34 @@ public static class TennisRacketDb
     public static List<TennisRacket> GetAllTennisRackets()
     {
         // Get a connection to the database
-        SqlConnection con = new();
-        //todo: Simplify and understand the connection string
-        con.ConnectionString = "Data Source=localhost;Initial Catalog=TennisDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False;Command Timeout=30";
+        SqlConnection con = new()
+        {
+            // Data Source: the server name or IP address of the database server
+            // Initial Catalog: the name of the database to connect to
+            // Integrated Security: whether to use Windows Authentication (True) or SQL Server Authentication (False)
+            // Encrypt: whether to encrypt the connection (True) or not (False)
+            // Trust Server Certificate: whether to trust the server's SSL certificate (True) or not (False)
+            ConnectionString = "Data Source=localhost;Initial Catalog=TennisDb;Integrated Security=True;Encrypt=True;Trust Server Certificate=True;"
+        };
         con.Open();
 
         // Create a SQL command to select all tennis rackets
-        SqlCommand selectCmd = new();
-        selectCmd.Connection = con;
-        selectCmd.CommandText = 
-            "SELECT ItemId" +
-            ", Weight" +
-            ", HeadSize" +
-            ", Brand" +
-            ", Price" +
-            " FROM TennisRacket";
+        SqlCommand selectCmd = new()
+        {
+            Connection = con,
+            CommandText =
+                "SELECT ItemId" +
+                ", Weight" +
+                ", HeadSize" +
+                ", Brand" +
+                ", Price" +
+                " FROM TennisRacket"
+        };
 
         // Execute the command and read the results
         SqlDataReader reader = selectCmd.ExecuteReader();
 
-        List<TennisRacket> rackets = new();
+        List<TennisRacket> rackets = [];
 
         // For each racket, create object and add it to the list
         while (reader.Read())
