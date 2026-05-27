@@ -45,4 +45,17 @@ public class TennisRacket
             _price = value; 
         }
     }
+
+    /// <summary>
+    /// Returns a string representation of the racket. WinForms controls
+    /// like ListBox will call this method by default to determine
+    /// what to display.
+    /// </summary>
+    /// <returns>A formatted string containing the brand and item identifier.</returns>
+    public override string ToString()
+    {
+        // *Note * VS says 0 references because this method is called implicitly
+        // by WinForms controls
+        return $"{Brand} racket has id {ItemId}";
+    }
 }
