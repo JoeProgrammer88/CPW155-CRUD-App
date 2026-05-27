@@ -28,12 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            lstTennisRackets = new ListBox();
+            SuspendLayout();
+            // 
+            // lstTennisRackets
+            // 
+            lstTennisRackets.FormattingEnabled = true;
+            lstTennisRackets.Location = new Point(12, 31);
+            lstTennisRackets.Name = "lstTennisRackets";
+            lstTennisRackets.Size = new Size(239, 154);
+            lstTennisRackets.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lstTennisRackets);
+            Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private ListBox lstTennisRackets;
     }
 }
